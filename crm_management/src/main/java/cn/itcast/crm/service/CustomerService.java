@@ -46,5 +46,11 @@ public interface CustomerService {
     @Consumes({"application/xml","application/json"})
     public void updateCustomerType(@PathParam("telephone") String telephone);
 
+    // 用户登录
+    @GET
+    @Path("/customer/login/{telephone}/{password}")
+    @Consumes({"application/json","application/xml"})
+    @Produces({"application/json","application/xml"})
+    public Customer login(@PathParam("telephone")String telephone,@PathParam("password")String password);
 
 }

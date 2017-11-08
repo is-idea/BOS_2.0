@@ -49,4 +49,13 @@ public class CustomerServiceImpl implements CustomerService {
         customerDao.updateType(telephone);
     }
 
+    @Override
+    public Customer login(String telephone, String password) {
+
+        Customer byTelephoneAndPassword = customerDao.findByTelephoneAndPassword(telephone, password);
+        System.out.println(byTelephoneAndPassword);
+        return byTelephoneAndPassword;
+
+    }
+
 }

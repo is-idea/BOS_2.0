@@ -1,5 +1,6 @@
 package cn.itcast.action;
 
+import cn.itcast.bos.constant.Constants;
 import cn.itcast.crm.domain.Customer;
 import cn.itcast.utils.BaseAction;
 import cn.itcast.utils.IndustrySMS;
@@ -169,6 +170,31 @@ public class CustomerAction extends BaseAction<Customer>{
                 ServletActionContext.getResponse().getWriter().print("邮箱已经绑定,请勿重复绑定");
             }
         return NONE;
+    }
+
+    /**
+     * 用户登录
+     *
+     * @return
+     */
+    @Action(value = "customer_login",results = {
+            @Result(name = "success",type = "redirect",location = "index.html#/myhome"),
+            @Result(name = "error",type = "redirect",location = "login.html")
+    })
+    public String login(){
+
+        Customer customer = WebClient
+                .create(Constants.CRM_MANAGEMENT_URL+"/services/customerService/customer/login/"+model.getTelephone()+"/"+model.getPassword())
+                .accept(MediaType.APPLICATION_JSON)
+                .get(Customer.class);
+
+        if (null != customer) {
+            // 用户存在,登录成功
+            ServletActionContext.getContext().getValueStack().push(customer);
+            return SUCCESS;
+        }
+        // 用户不存在,登录失败
+        return ERROR;
     }
 
 }

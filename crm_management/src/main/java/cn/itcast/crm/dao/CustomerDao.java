@@ -25,5 +25,5 @@ public interface CustomerDao extends JpaRepository<Customer,Integer>{
     @Modifying
     public void updateType(String telephone);
 
-
+    Customer findByTelephoneAndPassword(String telephone, String password);
 }
