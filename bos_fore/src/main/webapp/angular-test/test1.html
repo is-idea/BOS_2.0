@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript">
+        var myapp = angular.module("myapp",[]);
+        myapp.controller("myController",["$scope",function ($scope) {
+            $scope.name = "刘力源"
+            $scope.clearValue=function () {
+                $scope.name="";
+            }
+        }]);
+    </script>
+    <title>AngularHelloWorld</title>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myController">
+        <div>
+            <input type="text" name="name" ng-model="name" /><br/>
+            <input type="button" value="Clear" ng-click="clearValue()" />
+        </div>
+        <div>
+            Hello,{{name}}<hr />
+            Hello,<font ng-bind="name"></font>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript">
+        var myapp = angular.module("myapp",[]);
+        myapp.controller("myController",["$scope","$http",function ($scope,$http) {
+
+            $http.get("product.json").success(function (data) {
+                $scope.products=data;
+            });
+        }]);
+    </script>
+    <title>AngularHelloWorld2</title>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myController">
+        <table width="100%" border="1">
+            <tr>
+                <td>商品ID</td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{$index+1}}</td>
+                <td><font color="red">{{product.name}}</font></td>
+                <td>{{product.price}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

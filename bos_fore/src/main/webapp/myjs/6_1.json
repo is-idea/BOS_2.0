@@ -1,0 +1,12 @@
+{
+        "totoCount":100,
+"products":[
+                {"id":1,"name":"刘力源一号","price":100},
+                {"id":2,"name":"刘力源二号","price":100},
+                {"id":3,"name":"刘力源三号","price":100},
+                {"id":4,"name":"刘力源四号","price":100},
+                {"id":5,"name":"刘力源五号","price":100},
+                {"id":6,"name":"刘力源六号","price":100},
+                {"id":7,"name":"刘力源七号","price":100}
+          ]
+}
